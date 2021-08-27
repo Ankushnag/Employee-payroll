@@ -1,0 +1,88 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+<div class="dashboard-content-one">
+  <!-- Breadcubs Area Start Here -->
+  <div class="breadcrumbs-area">
+    <h3>Employee</h3>
+    <ul>
+        
+        <li>Employee List</li>
+    </ul>
+</div>
+<!-- Teacher Table Area Start Here -->
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>All Employee</h3>
+                </div>
+               <div class="dropdown">
+                  
+                </div>
+            </div>
+            <form class="mg-b-20" method="GET" action="emp_search">
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    <!--search-->
+                   
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="Search by Name ..." name="query" id="query" class="form-control">
+                    </div>
+
+                    
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+                    </div>
+                   
+                    <!--end search-->
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>DOB</th>
+                            <th>Phone</th>
+                            <th>Payment</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in emp %}
+                        <tr>
+                           
+                            <td>{{i.id}}</td>
+                            <td>{{i.emp_name}} {{i.emp_last_name}}</td>
+                            <td>{{i.emp_dob}}</td>
+                            <td>{{i.emp_phone}}</td>
+                            <td>{{i.emp_payment}}</td>
+                             <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="delet_emp/{{i.id}}/"><i class="fas fa-times text-orange-red"></i>Delete</a>
+                                        <a class="dropdown-item" href="employee_detail/{{i.id}}/"><i class="fas fa-cogs text-dark-pastel-green"></i>View</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Update</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Teacher Table Area End Here -->
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+
+<div class="dashboard-content-one">
+    <!-- Breadcubs Area Start Here -->
+    <div class="breadcrumbs-area">
+        <h3>Employee</h3>
+        <ul>
+            
+            <li>Employee Add </li>
+        </ul>
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3 style="color: green;">{{message}}</h3>
+        {% endfor %}
+    </div>
+    <!-- Breadcubs Area End Here -->
+    <!-- Admit Form Area Start Here -->
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>Add New Employee</h3>
+                </div>
+                
+            </div>
+
+
+            <form class="new-added-form" action="emp_add" method="POST">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>First Name *</label>
+                        <input type="text" placeholder="" name="fname" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Last Name *</label>
+                        <input type="text" placeholder="" name="lname" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Gender *</label>
+                        <select  name="gender" class="select2">
+                            <option value="">Please Select Gender *</option>
+                            <option value="Male">Male</option>
+                            <option value="Femal">Female</option>
+                            <option value="Other">Others</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Date</label>
+                        <input type="date" placeholder="YYYY-MM-DD" class="form-control" name="date" data-position="bottom right">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Education</label>
+                        <input type="text" placeholder="" name="education" class="form-control">
+                    </div>
+                    
+                   
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>E-Mail</label>
+                        <input type="email" placeholder="" name="email" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Field *</label>
+                        <select class="select2" name="field">
+                           {% for i in field %}
+                            <option value="{{i.field_name}}">{{i.field_name}}</option>
+                            {% endfor %}
+                            
+                        </select>
+                    </div>
+                    
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Payment</label>
+                        <input type="text" placeholder="" name="payment" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Phone</label>
+                        <input type="text" placeholder="" name="phone" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Username</label>
+                        <input type="text" placeholder="" name="username" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="" name="password" class="form-control">
+                    </div>
+                    <div class="col-lg-6 col-12 form-group">
+                        <label>Address</label>
+                        <textarea class="textarea form-control" name="address" name="message" id="form-message" cols="10"
+                            rows="9"></textarea>
+                    </div>
+                   <!-- <div class="col-lg-6 col-12 form-group mg-t-30">
+                        <label class="text-dark-medium">Upload Employee Photo (150px X 150px)</label>
+                        <input type="file" class="form-control-file">
+                    </div> -->
+                    <div class="col-12 form-group mg-t-8">
+                        <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                        <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Admit Form Area End Here -->
+   
+</div>
+
+
+{% endblock %}

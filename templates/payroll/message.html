@@ -1,0 +1,56 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+<!-- Breadcubs Area End Here -->
+<!-- Add Expense Area Start Here -->
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>Add Notice</h3>
+            </div>
+
+            
+
+    {% for message in messages %}
+    <h3 style="color: green;">{{message}}</h3>
+    {% endfor %}
+
+          
+        </div>
+        <form class="new-added-form" action="{% url 'message' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Title *</label>
+                    <input type="text" name="title" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Detail *</label>
+                    <input type="text" name="detail" placeholder="" class="form-control">
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>posted_by *</label>
+                    <input type="text" name="posted_by" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Date</label>
+                    <input type="date" placeholder="" name="date" class="form-control">
+                </div>
+               
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                    <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Add Expense Area End Here -->
+
+
+
+{% endblock %}

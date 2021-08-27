@@ -1,0 +1,89 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+
+
+
+
+
+
+<div class="dashboard-content-one">
+    <!-- Breadcubs Area Start Here -->
+    <div class="breadcrumbs-area">
+      <h3>Attendance</h3>
+      <ul>
+          
+          <li>report</li>
+      </ul>
+  </div>
+  <!-- Teacher Table Area Start Here -->
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>all reports</h3>
+                </div>
+               <div class="dropdown">
+                    
+                </div>
+            </div>
+            <form class="mg-b-20" action="search_attendance" method="GET">
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="Search by ID ..." name="query" id="query" class="form-control">
+                    </div>
+                    
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                           
+                            <th>Employee ID</th>
+                            <th>Date</th>
+                            <th>Present/Absent</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for i in attendance %}
+                        <tr>
+                           
+                            <td>{{i.emp_iid}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.presenty}}</td>
+                            
+                             <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Delete/refresh</a>
+                                      
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Teacher Table Area End Here -->
+
+  </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+
+
+<div class="dashboard-content-one">
+    <!-- Breadcubs Area Start Here -->
+    <div class="breadcrumbs-area">
+        <h3>Field</h3>
+        <ul>
+            
+            <li>New Add </li>
+        </ul>
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3 style="color: green;">{{message}}</h3>
+        {% endfor %}
+    </div>
+    <!-- Breadcubs Area End Here -->
+    <!-- Admit Form Area Start Here -->
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>Add New Field</h3>
+                </div>
+                
+            </div>
+            <form class="new-added-form" action="field_save" method="POST">
+
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Field name *</label>
+                        <input required type="text" placeholder="" name="field_name" class="form-control">
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>Explain *</label>
+                        <input type="text" placeholder="" name="field_explain" class="form-control">
+                    </div>
+                    
+                    <div class="col-12 form-group mg-t-8">
+                        <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                        <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Admit Form Area End Here -->
+   
+</div>
+
+
+
+{% endblock %}

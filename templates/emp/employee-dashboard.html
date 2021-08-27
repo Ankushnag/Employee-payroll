@@ -1,0 +1,72 @@
+{% extends 'emp/base.html' %} {% load static %}
+
+			{% block content %}
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+				
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="welcome-box">
+								<div class="welcome-img">
+									<!-- <img alt="" src="{% static 'assets/img/profiles/avatar-02.jpg' %}"> -->
+								</div>
+								{%if user.is_authenticated%}
+								<div class="welcome-det">
+									<h3>{{user.first_name}}</h3>
+
+								</div>
+								{%endif%}
+							</div>
+						</div>
+					</div>
+					
+					
+
+							
+				<!-- /Page Content -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card mb-0">
+							<div class="card-header">
+								<h4 class="card-title mb-0">Allocated Tasks</h4>
+								
+							</div>
+							<div class="card-body">
+
+								<div class="table-responsive">
+									<table class="datatable table table-stripped mb-0">
+										<thead>
+											<tr>
+												<th>Tasks</th>
+												<th>Description</th>
+												<th>Start Date</th>
+												<th>End Date</th>
+												<th>Project Status</th>
+											</tr>
+										</thead>
+										<tbody>
+										{%for i in task%}
+											<tr>
+												<td>{{i.task_name}}</td>
+												<td>{{i.description}}</td>
+												<td>{{i.start_date}}</td>
+												<td>{{i.end_date}}</td>
+												<td>{{i.status}}</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			</div>
+			
+			{%endblock%}
+		

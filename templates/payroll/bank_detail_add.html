@@ -1,0 +1,63 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+<!-- Breadcubs Area End Here -->
+<!-- Add Expense Area Start Here -->
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>Add Bank Detail</h3>
+            </div>
+
+            
+
+    {% for message in messages %}
+    <h3 style="color: green;">{{message}}</h3>
+    {% endfor %}
+
+          
+        </div>
+        <form class="new-added-form" method="POST">
+            {% csrf_token %}
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Employee ID *</label>
+                    <input type="number" name="empid" placeholder="" class="form-control">
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Bank Name *</label>
+                    <input type="text" name="bank_name" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>bank account number *</label>
+                    <input type="text" name="bank_ac_no" placeholder="" class="form-control">
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>IFSC *</label>
+                    <input type="text" name="ifsc" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Pan Number</label>
+                    <input type="text" placeholder="" name="pan" class="form-control">
+                </div>
+               
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                    <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Add Expense Area End Here -->
+
+
+
+{% endblock %}

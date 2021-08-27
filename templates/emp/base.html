@@ -1,0 +1,235 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/smarthr/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Nov 2020 05:11:20 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="Smarthr - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Dashboard - APS </title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+		
+		<!-- Lineawesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+		
+		<!-- Chart CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+			<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
+			<script rc="{% static 'assets/js/respond.min.js' %}"></script>
+		<![endif]-->
+		
+    </head>
+	
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/index" class="logo">
+						<img src="{% static 'assets/img/logo.png' %}" width="40" height="40" alt="">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a id="toggle_btn" href="{% static 'javascript:void(0);' %}">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				
+				<!-- Header Title -->
+                <div class="page-title-box">
+					<h3>APS MICROTECH</h3>
+                </div>
+				<!-- /Header Title -->
+				
+				<a id="mobile_btn" class="mobile_btn" href="{% static '#sidebar' %}"><i class="fa fa-bars"></i></a>
+				
+				<!-- Header Menu -->
+				<ul class="nav user-menu">
+				
+					<!-- Search -->
+					<li class="nav-item">
+						<div class="top-nav-search">
+							<a href="{% static 'javascript:void(0);' %}" class="responsive-search">
+								<i class="fa fa-search"></i>
+						   </a>
+							<form action="smarthr/light/search.html">
+								<input class="form-control" type="text" placeholder="Search here">
+								<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+					</li>
+					<!-- /Search -->
+				
+					<!-- Flag -->
+					
+					<!-- Notifications -->
+					<li> 
+						<a href="{% url 'notification' %}"><i class="fa fa-calendar"></i></a>
+					</li>
+					
+	
+					
+					{%if user.is_authenticated%}
+					<li class="nav-item dropdown has-arrow main-drop">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img src="{% static 'assets/img/profiles/avatar-21.jpg' %}" alt="">
+							<span class="status online"></span></span>
+							<span>{{user.first_name}}</span>
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+							
+							<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+						</div>
+					</li>
+				</ul>
+				<!-- /Header Menu -->
+				
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="">My Profile</a>
+						<a class="dropdown-item" href="">Settings</a>
+						<a class="dropdown-item" href="">Logout</a>
+					</div>
+				</div>
+				{%endif%}
+				<!-- /Mobile Menu -->
+				
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span>Main</span>
+							</li>
+							<li >
+								<a href="{% url 'emp_dashboard' %}"><i class="la la-dashboard"></i> <span> Employee Dashboard</span> </a>
+
+							</li>
+							<li class="submenu">
+								
+							</li>
+							<li class="menu-title"> 
+								<span>Employees</span>
+							</li>
+							<li>
+								<a href="{% url 'leaves' %}"><i class="la la-user"></i> <span>My Leaves</span> <span class="menu-arrow"></span></a>
+								
+							</li>
+							
+							<li>
+								<a href="{% url 'emp_projects' %}"><i class="la la-rocket"></i> <span>Projects</span> <span class="menu-arrow"></span></a>
+					
+							</li>
+							
+							
+							<li class="menu-title"> 
+								<span>HR</span>
+							</li>
+							
+							<li>
+								<a href="{% url 'emp_payslip' %}"><i class="la la-money"></i> <span>My Salary Slip </span> <span class="menu-arrow"></span></a>
+								
+							</li>
+
+							<li>
+								<a href="{% url 'emp_attend' %}"><i class="la la-money"></i> <span>My Attendance</span> <span class="menu-arrow"></span></a>
+								
+							</li>
+
+							<li>
+								<a href="{% url 'notification' %}"><i class="la la-money"></i> <span>Notifications/ messages</span> <span class="menu-arrow"></span></a>
+								
+							</li>
+
+							<li>
+								<a href="{% url 'payment' %}"><i class="la la-money"></i> <span>My Paymets List</span> <span class="menu-arrow"></span></a>
+								
+							</li>
+							
+						</ul>
+
+
+
+
+
+						
+
+
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+            
+{% block content %}
+
+ {% endblock %}
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/jquery-3.2.1.min.js' %}"></script>
+		
+	<!-- Bootstrap Core JS -->
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	
+	<!-- Slimscroll JS -->
+	<script src="{% static 'assets/js/jquery.slimscroll.min.js' %}"></script>
+	
+	<!-- Chart JS -->
+	<script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/raphael/raphael.min.js' %}"></script>
+	<script src="{% static 'assets/js/chart.js' %}"></script>
+	
+	<!-- Datetimepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+	
+	<!-- Calendar JS -->
+	<script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'assets/js/fullcalendar.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.fullcalendar.js' %}"></script>
+
+	<!-- Select2 JS -->
+	<script src="{% static 'assets/js/select2.min.js' %}"></script>
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/app.js' %}"></script>
+
+	
+	
+</body>
+
+<!-- Mirrored from dreamguys.co.in/smarthr/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Nov 2020 05:11:20 GMT -->
+</html>

@@ -1,0 +1,96 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+
+
+
+
+<div class="dashboard-content-one">
+    <!-- Breadcubs Area Start Here -->
+    <div class="breadcrumbs-area">
+      <h3>Expenses</h3>
+      <ul>
+          
+          <li>All expenses</li>
+      </ul>
+  </div>
+  <!-- Teacher Table Area Start Here -->
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>All Expenses</h3>
+                </div>
+               <div class="dropdown">
+                    
+
+                    
+                </div>
+            </div>
+            <form class="mg-b-20">
+                <div class="row gutters-8">
+                    <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="Search by ID ..." class="form-control">
+                    </div>
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="Search by Name ..." class="form-control">
+                    </div>
+                    <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="Search by Phone ..." class="form-control">
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                           
+                            <th>Pay to</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>amount</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for i in expense %}
+                        <tr>
+                            
+                            <td>{{i.pay_to}}</td>
+                            <td>{{i.phone}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.amount}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.describe_payment}}</td>
+                             <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="delet_exp/{{i.id}}/"><i class="fas fa-times text-orange-red"></i>Delete</a>
+                                       
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Teacher Table Area End Here -->
+
+  </div>
+
+
+{% endblock %}

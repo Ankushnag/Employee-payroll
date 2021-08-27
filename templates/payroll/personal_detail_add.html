@@ -1,0 +1,66 @@
+{% extends "payroll\base.html" %} {% load static %} {% block content %}
+
+
+
+
+<!-- Breadcubs Area End Here -->
+<!-- Add Expense Area Start Here -->
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                <h3>Add Personal Detail</h3>
+            </div>
+
+            
+
+    {% for message in messages %}
+    <h3 style="color: green;">{{message}}</h3>
+    {% endfor %}
+
+          
+        </div>
+        <form class="new-added-form"  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Employee ID *</label>
+                    <input type="number" name="empid" placeholder="" class="form-control">
+                </div>
+
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Telephone Number *</label>
+                    <input type="text" name="tel" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Nationality *</label>
+                    <input type="text" name="nationality" placeholder="" class="form-control">
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Rligion *</label>
+                    <input type="text" name="religion" placeholder="" class="form-control">
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Maretial Status</label>
+                    <input type="text" placeholder="" name="marital_status" class="form-control">
+                </div>
+
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>Photo </label>
+                    <input type="file" placeholder="" name="photo" class="form-control">
+                </div>
+               
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                    <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Add Expense Area End Here -->
+
+
+
+{% endblock %}
